@@ -14,10 +14,16 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function transform(arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error("'arr' parameter must be an instance of the Array!");
+	}
+	
+	const result = [];
 	if (arr.length === 0) {
 		return []
 	}
   for (let i = 0; i < arr.length; i++) {
+		if (arr[i] !== '--double-next')
 		if (arr[i] === '--double-next') {
 			arr[i] = arr[i - 1] + 1;
 		} else if (arr[i] === '--discard-prev') {
